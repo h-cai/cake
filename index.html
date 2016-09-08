@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/angular/angular.js" ></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"></li>
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></li>
+</head>
+<body  ng-app="myApp">
+
+<!-- test -->
+<div ng-init="quantity=1;cost=30; student={firstname:'李',lastname:'刚',rollno:101};marks=[82,91,78,77,64]">
+
+<!-- 使用数字 -->
+<p>Expense on Books : {{cost * quantity}} Rs</p>
+
+<!-- 使用字符串 -->
+<p>Hello {{student.firstname + " " + student.lastname}}!</p>
+
+<!-- 使用对象 -->
+<p>Roll No: {{student.rollno}}</p>
+
+</div>
+
+<div ng-controller="studentController" >
+Enter first name:
+<input type="text" ng-model="student.firstName">
+<br>
+Enter last name:
+<input type="text" ng-model="student.lastName">
+<br>
+<br>You are entering: {{student.fullName()| uppercase }}
+
+<!-- <ul>
+	<li ng-repeat="item in student.GetList()">
+		{{item.firstName}}
+	</li>
+</ul>
+ -->
+</div>
+
+
+
+
+<!-- 过滤 -->
+<!-- 1	uppercase	转换文本为大写文字。
+2	lowercase	转换文本为小写文字。
+3	currency	以货币格式格式化文本。
+4	filter	过滤数组到根据提供标准的一个子集。
+5	orderby	排序基于提供标准的数组。 -->
+
+<script type="text/javascript">
+
+var mainApp=angular.module('myApp', []);
+
+
+mainApp.controller("studentController", function($scope) {
+
+
+		$scope.student={
+					firstName:"而是",
+					lastName:"dsad"			    
+				}
+
+		$scope.student.fullName=function () {		
+	         var studentObject= $scope.student;
+	         return studentObject.firstName +  studentObject.lastName;
+		}
+    });
+
+
+
+	
+
+</script>
+
+</body>
+</html>
